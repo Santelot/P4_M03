@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Playbook-P4-M03</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            padding: 20px;
+        }
+        .header {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px;
+            text-align: center;
+        }
+        .banner {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px;
+            cursor: pointer;
+            margin-bottom: 10px;
+        }
+        .banner .title {
+            font-size: 1.2em;
+            display: flex;
+            justify-content: space-between;
+        }
+        .banner .subtitle {
+            font-size: 1em;
+            margin-top: 5px;
+            border-top: 1px solid white;
+            padding-top: 5px;
+        }
+        .content {
+            display: none;
+            padding: 10px;
+            border: 1px solid #ddd;
+            margin-bottom: 10px;
+        }
+        .section {
+            margin-bottom: 15px;
+        }
+        .step-title {
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 5px;
+            text-align: left;
+        }
+        .section-title {
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 5px;
+            text-align: right;
+        }
+        .dialogue {
+            background-color: #f0f0f0;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            padding: 10px;
+            margin: 10px 0;
+            text-align: right;
+            font-style: italic;
+        }
+        .dropdown {
+            margin-bottom: 20px;
+        }
+        .dropdown select {
+            font-size: 1em;
+            padding: 5px;
+            margin-left: 10px;
+        }
+        .time-title {
+            font-size: 1.5em;
+            margin-bottom: 10px;
+        }
+        .note {
+            background-color: #ffeb3b;
+            padding: 10px;
+            border: 1px solid #ddd;
+            margin-bottom: 10px;
+        }
+        .nav-buttons {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 10px;
+        }
+        .nav-buttons button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            cursor: pointer;
+        }
+        .nav-buttons button:disabled {
+            background-color: #ddd;
+            cursor: not-allowed;
+        }
+    </style>
+    <script>
+        function toggleContent(id) {
+            var content = document.getElementById(id);
+            if (content.style.display === "none") {
+                content.style.display = "block";
+            } else {
+                content.style.display = "none";
+            }
+        }
+
+        function updateActivities() {
+            var selectedTime = document.getElementById('time-select').value;
+            var activities = document.getElementsByClassName('activity');
+
+            document.getElementById('selected-time').innerText = "Tiempo efectivo de clase: " + selectedTime + " minutos";
+
+            for (var i = 0; i < activities.length; i++) {
+                activities[i].style.display = 'block';
+            }
+
+            if (selectedTime === '45') {
+                document.getElementById('activity-2').style.display = 'none';
+            } else if (selectedTime === '40') {
+                document.getElementById('activity-2').style.display = 'none';
+                document.getElementById('activity-4').style.display = 'none';
+            }
+        }
+
+        function navigateTo(id) {
+            var element = document.getElementById(id);
+            window.scrollTo({
+                top: element.offsetTop,
+                behavior: 'smooth'
+            });
+        }
+    </script>
+</head>
+<body onload="updateActivities()">
+
+<div class="header">
+    <h1>Playbook-P4-M03</h1>
+</div>
+
+<div class="container">
+    <div class="dropdown">
+        <label for="time-select">Tiempo efectivo de Clase:</label>
+        <select id="time-select" onchange="updateActivities()">
+            <option value="50">50 minutos</option>
+            <option value="45">45 minutos</option>
+            <option value="40">40 minutos</option>
+        </select>
+    </div>
+
+    <h2 id="selected-time" class="time-title">Tiempo efectivo de clase: 50 minutos</h2>
+<!-- Actividad 0: Revisión de Misión -->
+<div id="activity-0" class="activity">
+    <div class="banner" onclick="toggleContent('mission_review')">
+        <div class="title">
+            <span>📝 Actividad 0: Revisión de Misión</span>
+            <span>⏰ Tiempo: N/A</span>
+        </div>
+        <div class="subtitle">Verificación de materiales y recursos</div>
+        <div class="summary">Proyectar la diapositiva "Materiales" y verificar que los estudiantes tengan acceso a sus Magic Tablets, cuadernos para Paper Programming, y la computadora con MakeCode de Microbit.</div>
+    </div>
+    <div id="mission_review" class="content">
+        <div class="section">
+            <div class="step-title">Paso 1: Proyectar la diapositiva 1 "Materiales" y verificar los materiales.</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">—</div>
+        </div>
+    </div>
+</div>
+<!-- Actividad 1: Saludo y Ritual Gnius Club -->
+<div id="activity-1" class="activity">
+    <div class="banner" onclick="toggleContent('gnius_club_welcome')">
+        <div class="title">
+            <span>👋 Actividad 1: Saludo y Ritual Gnius Club</span>
+            <span>⏰ Tiempo: 3 minutos</span>
+        </div>
+        <div class="subtitle">Bienvenida y preparación para la misión</div>
+        <div class="summary">Dar la bienvenida a los estudiantes, revisar el estado de ánimo y explicar los objetivos de la misión.</div>
+    </div>
+    <div id="gnius_club_welcome" class="content">
+        <div class="section">
+            <div class="step-title">Paso 1 (0.5 minutos): Proyectar la diapositiva 2 "Saludo y Ritual Gnius Club" y dar la bienvenida.</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">"¡Hola, Genios! 🌟 ¿Están listos para una nueva misión? Hoy vamos a descubrir cómo los sensores pueden interactuar con el mundo. ¡Es hora de comenzar nuestra aventura!"</div>
+        </div>
+        <div class="section">
+            <div class="step-title">Paso 2 (1 minuto): Proyectar la diapositiva 3 "Estado de Ánimo" y pedir a los estudiantes que expresen cómo se sienten usando gestos.</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">"¿Cómo están hoy? Si están emocionados, estiren las manos hacia adelante, y si no están muy emocionados, crucen los brazos."</div>
+        </div>
+        <div class="section">
+            <div class="step-title">Paso 3 (0.5 minutos): Proyectar la diapositiva 4 "Ritual de Agradecimiento" y guiar el ritual.</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">"Vamos a juntar nuestras manos en agradecimiento por lo que vamos a aprender hoy. ¡Gracias por asistir, Genios!"</div>
+        </div>
+        <div class="section">
+            <div class="step-title">Paso 4 (1 minuto): Proyectar la diapositiva 5 "Objetivos de la Misión" y explicar los objetivos del día.</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">"Hoy aprenderemos cómo usar sensores de luz con el Microbit y mostrar imágenes en la pantalla de LEDs. Nuestros objetivos son: 1) Entender cómo funciona un sensor de luz, y 2) Aplicar el concepto en un proyecto interactivo con paper programming. ¡Vamos a lograrlo juntos!"</div>
+        </div>
+    </div>
+</div>
+<!-- Actividad 2: Innovación del Día -->
+<div id="activity-2" class="activity">
+    <div class="banner" onclick="toggleContent('innovation_day')">
+        <div class="title">
+            <span>💡 Actividad 2: Innovación del Día</span>
+            <span>⏰ Tiempo: 4 minutos</span>
+        </div>
+        <div class="subtitle">Exploración de la tecnología de sensores de luz</div>
+        <div class="summary">Presentar y explicar cómo los sensores de luz se utilizan en lámparas automáticas y otras aplicaciones cotidianas.</div>
+    </div>
+    <div id="innovation_day" class="content">
+        <div class="section">
+            <div class="step-title">Paso 1 (1 minuto): Proyectar la diapositiva 6 "Innovación del Día". Introducir el concepto de lámparas automáticas que usan sensores de luz.</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">"¡Genios! Hoy vamos a hablar de algo que está por todas partes, pero que tal vez no habías notado: las lámparas automáticas. Estas lámparas se encienden solas cuando oscurece, y lo hacen usando sensores de luz, ¡igual que el Microbit!"</div>
+        </div>
+        <div class="section">
+            <div class="step-title">Paso 2 (2 minutos): Proyectar la diapositiva 7 "Video sobre Sensores de Luz". Explicar cómo estas lámparas funcionan usando sensores de luz.</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">"Vamos a ver un video corto que explica cómo estas lámparas usan sensores de luz para encenderse cuando está oscuro. ¡Es como si la lámpara supiera cuándo te hace falta!"</div>
+        </div>
+        <div class="section">
+            <div class="step-title">Paso 3 (2 minutos): Proyectar la diapositiva 8 "Discusión sobre Sensores de Luz". Guiar una discusión sobre el uso cotidiano de los sensores de luz.</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">"¿Qué les pareció el video? Como vieron, los sensores de luz están en objetos cotidianos como las lámparas automáticas. ¡Imaginen qué más podemos crear con estos sensores! Hoy, vamos a aprender a usarlos con el Microbit."</div>
+        </div>
+    </div>
+</div>
+<!-- Actividad 3: Brain Gym -->
+<div id="activity-3" class="activity">
+    <div class="banner" onclick="toggleContent('brain_gym')">
+        <div class="title">
+            <span>🧠 Actividad 3: Brain Gym</span>
+            <span>⏰ Tiempo: 8 minutos</span>
+        </div>
+        <div class="subtitle">Introducción al sensor de luz y programación con el Microbit</div>
+        <div class="summary">Aprender a utilizar el sensor de luz del Microbit a través de una serie de pasos prácticos.</div>
+    </div>
+    <div id="brain_gym" class="content">
+        <div class="section">
+            <div class="step-title">Paso 1 (0.5 minutos): Proyectar la diapositiva 9 "Brain Gym". Introducir la actividad mencionando el Easter Egg escondido.</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">"¡Genios! Antes de comenzar con el Brain Gym, les doy una pista… ¡hay un Easter Egg escondido en nuestra misión de hoy! Al final de la clase haré una pregunta, y quien la responda correctamente ganará Mon-e. ¡Así que presten mucha atención!"</div>
+        </div>
+        <div class="section">
+            <div class="step-title">Paso 2 (1 minuto): Proyectar la diapositiva 10 "Introducción al Sensor de Luz". Explicar cómo los LEDs del Microbit pueden funcionar como un sensor de luz.</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">"Genios, vamos a aprender cómo los sensores pueden recoger información del mundo real. En el caso del sensor de luz de Microbit, lo que hace es detectar cuánta luz recibe. ¡Es como si nuestros Microbits tuvieran ojos para detectar la luz!"</div>
+        </div>
+        <div class="section">
+            <div class="step-title">Paso 3 (1 minuto): Proyectar la diapositiva 11 "Bloque 'para siempre'". Mostrar cómo utilizar el bloque "para siempre" en MakeCode.</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">"Primero, en MakeCode, arrastren el bloque de 'para siempre'. Esto significa que todo lo que pongamos dentro del bloque sucederá todo el tiempo mientras nuestro Microbit esté encendido."</div>
+        </div>
+        <div class="section">
+            <div class="step-title">Paso 4 (1 minuto): Proyectar la diapositiva 12 "Bloque 'si... sino'". Explicar cómo utilizar la condición "si... sino" para controlar el sensor de luz.</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">"Ahora, como queremos que la lámpara encienda cuando hay poca luz, necesitamos agregar una condición. Para esto, arrastren el bloque de 'si... sino'. Este bloque nos permite decirle al Microbit que haga algo si pasa 'algo', pero si no pasa, puede hacer otra cosa o no hacer nada."</div>
+        </div>
+        <div class="section">
+            <div class="step-title">Paso 5 (1 minuto): Proyectar la diapositiva 13 "Comparación". Explicar cómo usar comparaciones para verificar la cantidad de luz.</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">"Después, vamos a agregar una comparación. Esto es cuando le decimos al Microbit que observe si un número es más grande que otro número. ¡Es como comparar quién tiene más puntos en un juego!"</div>
+        </div>
+        <div class="section">
+            <div class="step-title">Paso 6 (1 minuto): Proyectar la diapositiva 14 "Sensor de luz". Usar el sensor de luz para activar una acción en el Microbit.</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">"Para comparar, usaremos el bloque del sensor de luz. El Microbit le preguntará al sensor: '¿Cuánta luz hay?' y obtendrá un número. Luego, le diremos que, si la luz es menor a 100, ¡tome una acción!"</div>
+        </div>
+        <div class="section">
+            <div class="step-title">Paso 7 (1 minuto): Proyectar la diapositiva 15 "Mostrar LEDs". Explicar cómo utilizar el bloque de "mostrar LEDs" para mostrar imágenes.</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">"Por último, la acción que queremos es que el Microbit muestre una flor en la pantalla en el caso de que se cumpla nuestra condición, pero si no se cumple, mostraremos la pantalla vacía. ¡Recuerden que las plantas necesitan luz para crecer!"</div>
+        </div>
+        <div class="section">
+            <div class="step-title">Paso 8 (1 minuto): Proyectar la diapositiva 16 "Simulación en MakeCode". Probar el código en la simulación de MakeCode.</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">"Una vez que tengan el código, vayan a la simulación de MakeCode y pruébenlo. Verán arriba a la izquierda un círculo que pueden ajustar para simular la luz que recibe el sensor."</div>
+        </div>
+    </div>
+</div>
+<!-- Actividad 4: State Change -->
+<div id="activity-4" class="activity">
+    <div class="banner" onclick="toggleContent('state_change')">
+        <div class="title">
+            <span>🧘 Actividad 4: State Change</span>
+            <span>⏰ Tiempo: 4.5 minutos</span>
+        </div>
+        <div class="subtitle">Ejercicio de activación física y revisión de objetivos</div>
+        <div class="summary">Los estudiantes realizarán un cambio de estado para mantenerse activos y listos para continuar la misión.</div>
+    </div>
+    <div id="state_change" class="content">
+        <div class="section">
+            <div class="step-title">Paso 1 (0.5 minutos): Proyectar la diapositiva 17 "Cambio de Estado". Crear entusiasmo para la actividad.</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">"¡Genios! Es hora de hacer un 'cambio de estado'. Vamos a movernos un poco para preparar nuestras mentes y cuerpos para lo que viene. ¡Estén atentos, la misión continúa!"</div>
+        </div>
+        <div class="section">
+            <div class="step-title">Paso 2 (1 minuto): Proyectar la diapositiva 18 "Movimiento del Sensor". Guiar a los estudiantes a imitar el funcionamiento de un sensor de luz, como si fueran el Microbit.</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">"Vamos a imitar el sensor de luz. Cuando extiendan sus manos hacia adelante, será como si el Microbit está recibiendo mucha luz. Si las bajan, será como si estuviera oscuro. ¡Muevan sus brazos para detectar la luz!"</div>
+        </div>
+        <div class="section">
+            <div class="step-title">Paso 3 (1.5 minutos): Proyectar la diapositiva 19 "Movimiento de la Pantalla". Los estudiantes fingen ser la pantalla del Microbit mostrando imágenes.</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">"Ahora imaginen que ustedes son la pantalla del Microbit. Cuando haya mucha luz, su pantalla mostrará un sol. Estiren los brazos y formen un círculo como si fueran un sol brillante. Cuando baje la luz, crucen los brazos como si estuviera oscuro. ¡Vamos, háganlo conmigo!"</div>
+        </div>
+        <div class="section">
+            <div class="step-title">Paso 4 (1 minuto): Dar un mensaje de cierre, conectando la actividad física con la siguiente fase de la clase.</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">"¡Excelente trabajo, Genios! Ya hemos activado nuestros sensores internos y estamos listos para seguir explorando cómo funciona el Microbit con la luz. ¡Vamos a continuar nuestra misión!"</div>
+        </div>
+        <div class="section">
+            <div class="step-title">Paso 5 (0.5 minutos): Proyectar la diapositiva 20 "Objetivos de la Misión". Revisar los objetivos alcanzados.</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">"Antes de continuar, Genios, vamos a revisar lo que ya hemos logrado en esta misión. Hemos aprendido cómo los sensores de luz detectan la luz y cómo mostrar imágenes en la pantalla del Microbit. ¡Muy bien, estamos avanzando!"</div>
+        </div>
+    </div>
+</div>
+<!-- Actividad 5: Team Gnius -->
+<div id="activity-5" class="activity">
+    <div class="banner" onclick="toggleContent('team_gnius')">
+        <div class="title">
+            <span>🤝 Actividad 5: Team Gnius</span>
+            <span>⏰ Tiempo: 3 minutos</span>
+        </div>
+        <div class="subtitle">Trabajo en equipo y organización para la actividad</div>
+        <div class="summary">Los estudiantes se organizan en parejas y recogen los materiales necesarios para la actividad.</div>
+    </div>
+    <div id="team_gnius" class="content">
+        <div class="section">
+            <div class="step-title">Paso 1 (0.5 minutos): Proyectar la diapositiva 21 "Team Gnius". Pedir a los estudiantes que se organicen en parejas.</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">"¡Genios! Es momento de organizarse en equipos. En esta misión, trabajaremos en parejas. Tienen 30 segundos para encontrar a su compañero de equipo. ¡Adelante!"</div>
+        </div>
+        <div class="section">
+            <div class="step-title">Paso 2 (0.5 minutos): Proyectar la diapositiva 22 "Temporizador - 30 Segundos". Los estudiantes tienen 30 segundos para organizarse en parejas.</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">"Tienen 30 segundos para organizarse. Encuentra a tu compañero para esta misión."</div>
+        </div>
+        <div class="section">
+            <div class="step-title">Paso 3 (1 minuto): Proyectar la diapositiva 23 "Recoger Materiales". Pedir a un representante que recoja las Magic Tablets para la actividad.</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">"Ahora que tienen a sus parejas, un representante de cada equipo pasará al frente para recoger las Magic Tablets para la actividad. ¡Tienen un minuto para hacerlo!"</div>
+        </div>
+        <div class="section">
+            <div class="step-title">Paso 4 (1 minuto): Proyectar la diapositiva 24 "Temporizador - 1 Minuto". Los estudiantes tienen un minuto para recoger los materiales.</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">"Tienen un minuto para recoger todo lo que necesitan para la actividad. ¡Vamos allá!"</div>
+        </div>
+    </div>
+</div>
+<!-- Actividad 6: Challenge -->
+<div id="activity-6" class="activity">
+    <div class="banner" onclick="toggleContent('challenge')">
+        <div class="title">
+            <span>🏆 Actividad 6: Challenge</span>
+            <span>⏰ Tiempo: 16.5 minutos</span>
+        </div>
+        <div class="subtitle">Paper Programming y reto de sensores de luz</div>
+        <div class="summary">Los estudiantes desarrollan un paper programming usando sensores de luz para mostrar imágenes en el Microbit.</div>
+    </div>
+    <div id="challenge" class="content">
+        <div class="section">
+            <div class="step-title">Paso 1 (0.5 minutos): Proyectar la diapositiva 25 "Challenge". Explicar el objetivo del reto.</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">"¡Genios! Ha llegado el momento del Challenge. Hoy su misión es hacer un paper programming donde usarán el sensor de luz para mostrar diferentes imágenes en la pantalla del Microbit. ¡Prepárense para el reto!"</div>
+        </div>
+        <div class="section">
+            <div class="step-title">Paso 2 (1 minuto): Proyectar la diapositiva 26 "Instrucciones del Challenge". Explicar los pasos del reto paso a paso.</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">"Primero, deberán usar su imaginación para programar en papel. Dibujen el Microbit y piensen cómo mostrarían imágenes en su pantalla de LEDs cuando la luz sea alta o baja. Luego, discútanlo con su compañero."</div>
+        </div>
+        <div class="section">
+            <div class="step-title">Paso 3 (10 minutos): Los estudiantes trabajan en el paper programming. Proyectar un temporizador de 10 minutos.</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">"Tienen 10 minutos para completar su programación en papel. Recuerden, usen la condición de luz para decidir qué imagen mostrar en la pantalla del Microbit. ¡Manos a la obra!"</div>
+        </div>
+        <div class="section">
+            <div class="step-title">Paso 4 (2 minutos): Proyectar la diapositiva 27 "Cambio de Roles". Pedir a los estudiantes que expliquen sus instrucciones a su compañero.</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">"Ahora, cada uno de ustedes le explicará a su compañero sus instrucciones, como si él o ella fuera un patito de goma. Su compañero debe quedarse en silencio y solo asentir si está de acuerdo, o agitar la cabeza si no lo está. ¡Vamos allá!"</div>
+        </div>
+        <div class="section">
+            <div class="step-title">Paso 5 (2 minutos): Proyectar la diapositiva 28 "Cambio de Roles". Pedir a los estudiantes que cambien de rol en el ejercicio.</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">"Ahora cambien de roles. El que fue programador será ahora el patito de goma, y el que fue patito explicará sus instrucciones. ¡Vamos a hacerlo!"</div>
+        </div>
+        <div class="section">
+            <div class="step-title">Paso 6 (2 minutos): Pedir a los estudiantes que discutan si sus instrucciones convencieron a su compañero.</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">"Ahora, tómense 2 minutos para compartir con su compañero si sus instrucciones los convencieron o no, y por qué. Esto será importante para lo que haremos en la próxima misión."</div>
+        </div>
+        <div class="section">
+            <div class="step-title">Paso 7 (1 minuto): Proyectar la diapositiva 28 "Objetivos Completados". Revisar los objetivos alcanzados en el reto.</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">"¡Excelente trabajo, Genios! Han completado su primer Paper Programming. Les toca Mon-e por su esfuerzo y creatividad. Vamos a revisar los objetivos de la misión para ver lo que hemos alcanzado hoy."</div>
+        </div>
+    </div>
+</div>
+<!-- Actividad 7: Easter Egg -->
+<div id="activity-7" class="activity">
+    <div class="banner" onclick="toggleContent('easter_egg')">
+        <div class="title">
+            <span>🥚 Actividad 7: Easter Egg</span>
+            <span>⏰ Tiempo: 2 minutos</span>
+        </div>
+        <div class="subtitle">Pregunta sorpresa sobre la luz</div>
+        <div class="summary">Una pregunta sobre cómo las plantas utilizan la luz del sol, con premios para los primeros en responder correctamente.</div>
+    </div>
+    <div id="easter_egg" class="content">
+        <div class="section">
+            <div class="step-title">Paso 1 (0.5 minutos): Proyectar la diapositiva 29 "Pregunta Easter Egg". Introducir la pregunta sorpresa.</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">"¡Llegó el momento de ver quién ha estado prestando atención! La siguiente diapositiva tiene una pregunta sobre algo que aprendimos en el Brain Gym. Voy a premiar con Mon-e a los tres primeros que me den la respuesta correcta. ¿Listos?"</div>
+        </div>
+        <div class="section">
+            <div class="step-title">Paso 2 (0.5 minutos): Proyectar la diapositiva 30 "¿Cómo utilizan las plantas la luz del sol?". Explicar cómo responder.</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">"La pregunta es: ¿Cómo utilizan las plantas la luz del sol? Recuerden, levanten la mano si saben la respuesta. No digan la respuesta en voz alta, solo levanten la mano. Elegiré a los primeros tres que levanten la mano para que me lo digan al oído."</div>
+        </div>
+        <div class="section">
+            <div class="step-title">Paso 3 (1 minuto): Proyectar la diapositiva 31 "Respuesta Correcta". Anunciar a los ganadores y entregar el Mon-e.</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">"¡Correcto! Las plantas usan la luz del sol para hacer su comida. Felicidades a los ganadores, tienen Mon-e. ¡Gran trabajo, Genios!"</div>
+        </div>
+    </div>
+</div>
+<!-- Actividad 8: Honor de Dojo -->
+<div id="activity-8" class="activity">
+    <div class="banner" onclick="toggleContent('honor_dojo')">
+        <div class="title">
+            <span>🏅 Actividad 8: Honor de Dojo</span>
+            <span>⏰ Tiempo: 3.5 minutos</span>
+        </div>
+        <div class="subtitle">Reflexión y cierre de la clase</div>
+        <div class="summary">Reflexión sobre lo aprendido y orden del espacio de trabajo.</div>
+    </div>
+    <div id="honor_dojo" class="content">
+        <div class="section">
+            <div class="step-title">Paso 1 (0.5 minutos): Proyectar la diapositiva 32 "Game Over". Pedir a los estudiantes que compartan lo que más les gustó de la clase.</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">"¡Genios! Han hecho un trabajo increíble hoy. Antes de terminar, tómense un momento para reflexionar. ¿Qué fue lo que más les gustó de aprender sobre los sensores de luz? Levanten la mano y compartan sus pensamientos."</div>
+        </div>
+        <div class="section">
+            <div class="step-title">Paso 2 (1.5 minutos): Felicitar al grupo por el esfuerzo y la creatividad demostrada.</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">"Hoy, todos como equipo han demostrado una gran creatividad y esfuerzo al trabajar con los sensores de luz y el Microbit. ¡Felicidades a todos por su increíble trabajo! ¡Sigan así, Genios!"</div>
+        </div>
+        <div class="section">
+            <div class="step-title">Paso 3 (1.5 minutos): Proyectar la diapositiva 33 "Ordenando el Espacio". Guiar a los estudiantes para que recojan sus materiales y dejen el lugar en orden.</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">"Ahora, como verdaderos Genios, vamos a honrar nuestro espacio de trabajo. Recuerden que parte de ser un Genio es dejar todo en orden. Por favor, recojan sus materiales y asegúrense de que todo esté limpio y organizado."</div>
+        </div>
+    </div>
+</div>
+    </div> <!-- Cierre del container -->
+
+    <!-- Scripts adicionales si es necesario -->
+    <script>
+        // Agregar scripts adicionales aquí si es necesario
+    </script>
+
+</body>
+</html>
